@@ -7,7 +7,8 @@ DATABASE_URL = os.environ["DATABASE_URL"]
 
 ASYNC_DATABASE_URL = DATABASE_URL.replace(
     "postgresql://",
-    "postgresql+asyncpg://"
+    "postgresql+asyncpg://",
+    1
 )
 
 engine = create_engine(DATABASE_URL)
@@ -18,15 +19,14 @@ SessionLocal = sessionmaker(
     bind=engine
 )
 
-async_engine = create_async_engine(
-    ASYNC_DATABASE_URL
-)
+async_engine = create_async_engine(ASYNC_DATABASE_URL)
 
 async_session = sessionmaker(
     async_engine,
     class_=AsyncSession,
     expire_on_commit=False
 )
+
 
 Base = declarative_base()
 
