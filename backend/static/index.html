@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Status</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .status {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #28a745;
+            position: relative;
+        }
+
+        .status::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 40px;
+            border: solid white;
+            border-width: 0 5px 5px 0;
+            transform: translate(-50%, -60%) rotate(45deg);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            font-size: 18px;
+        }
+
+        .endpoint {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background: #f4f4f4;
+            border-radius: 8px;
+            font-family: monospace;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="status"></div>
+        <h1>🚀 API is Running</h1>
+        <p>Your server is up and responding successfully.</p>
+        <div class="endpoint">
+            GET /api/health
+        </div>
+    </div>
+</body>
+</html>
