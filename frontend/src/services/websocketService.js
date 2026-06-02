@@ -1,5 +1,5 @@
 export const createWebSocket = (userId, onMessage, onOpen, onClose) => {
-  const ws = new WebSocket(`ws://localhost:8000/ws/${userId}`);
+  const ws = new WebSocket(`wss://fastapi-postgresql-notification-system-production.up.railway.app/ws/${userId}`);
 
   ws.onopen = () => {
     console.log('WebSocket connected');
