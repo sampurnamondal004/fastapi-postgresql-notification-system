@@ -29,11 +29,13 @@ class PostgresNotifier:
         await self.connection.add_listener(channel, self._handle_notification)
         logger.info(f"Listening to channel: {channel}")
 
-    async def _handle_notification(self, connection, pid, channel, payload):
+    def _handle_notification(self, connection, pid, channel, payload):
+        # asyncpg calls this synchronously — must schedule coroutines as tasks
         try:
             data = json.loads(payload)
+            loop = asyncio.get_event_loop()
             for listener in self.listeners:
-                await listener(data)
+                loop.create_task(listener(data))
         except Exception as e:
             logger.error(f"Error handling notification: {e}")
 
